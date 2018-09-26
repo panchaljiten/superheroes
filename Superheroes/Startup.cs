@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Superheroes.Contracts;
+using Superheroes.Infrastructure.Filters;
+using Superheroes.Services;
 
 namespace Superheroes
 {
@@ -11,6 +14,12 @@ namespace Superheroes
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddMvc((options) =>
+            {
+                options.Filters.Add(typeof(RequestModelValidationFilter));
+                options.Filters.Add(typeof(ExceptionHandlerFilter));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

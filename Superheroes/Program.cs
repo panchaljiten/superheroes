@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Superheroes.Contracts;
+using Superheroes.Services;
 
 namespace Superheroes
 {
@@ -17,6 +19,7 @@ namespace Superheroes
                 .ConfigureServices(x => 
                 {
                     x.AddSingleton<ICharactersProvider, CharactersProvider>();
+                    x.AddScoped<IBattleService, BattleService>();
                 });
     }
 }

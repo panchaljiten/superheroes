@@ -1,6 +1,7 @@
+using Superheroes.Models.Response;
 using System.Threading.Tasks;
 
-namespace Superheroes
+namespace Superheroes.Contracts
 {
     public interface ICharactersProvider
     {
